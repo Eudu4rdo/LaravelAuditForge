@@ -1,0 +1,35 @@
+{
+    "name": "eudu4rdo/laravelauditforge",
+    "description": "A Laravel package for auditing model changes.",
+    "version": "0.0.1",
+    "type": "library",
+    "keywords": ["laravel","audit"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Eduardo Garcia",
+            "email": "eduardogarcia79@live.com"
+        }
+    ],
+    "autoload": {
+      "psr-4": {
+        "eudu4rdo\\laravelauditforge\\": "src/"
+      }
+    },
+    "require": {
+      "php": "^8.0",
+      "illuminate/support": "^10.0 || ^11.0"
+    },
+    "extra": {
+      "laravel": {
+        "providers": [
+          "eudu4rdo\\laravelauditforge\\AuditForgeServiceProvider"
+        ],
+        "aliases": {
+          "AuditForge": "eudu4rdo\\laravelauditforge\\Facades\\AuditForge"
+        }
+      }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+  }
