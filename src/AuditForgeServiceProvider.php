@@ -7,12 +7,10 @@ class AuditForgeServiceProvider extends ServiceProvider
 {
     public function boot()
     {
-        // Publicando o arquivo de configuração
         $this->publishes([
             __DIR__ . '/../config/audit-forge.php' => config_path('audit-forge.php'),
         ], 'audit-forge');
 
-        // Publicando as migrações
         $this->publishes([
             __DIR__ . '/../database/migrations' => database_path('migrations'),
         ], 'auditforge-migrations');

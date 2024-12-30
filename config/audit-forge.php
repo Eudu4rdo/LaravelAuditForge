@@ -12,5 +12,6 @@ return[
         'primary_key' => 'id',
         'foreign_key' => 'user_id',
         'key_type'    => 'int'
-    ]
+    ],
+    'audit_use_jobs' => env('AUDIT_USE_JOBS', false)
 ];

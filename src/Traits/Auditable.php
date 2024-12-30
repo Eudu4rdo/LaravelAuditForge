@@ -8,15 +8,15 @@ trait Auditable
     protected static function bootAuditable()
     {
         static::creating(function ($model) {
-            AuditService::logAudit('creating', $model, null, auth()->id() ?? null);
+            AuditService::logWithJob('creating', $model, null, auth()->id() ?? null);
         });
 
         static::updating(function ($model) {
-            AuditService::logAudit('updating', $model, $model->getOriginal(), auth()->id() ?? null);
+            AuditService::logWithJob('updating', $model, $model->getOriginal(), auth()->id() ?? null);
         });
 
         static::deleting(function ($model) {
-            AuditService::logAudit('deleting', $model, null, auth()->id() ?? null);
+            AuditService::logWithJob('deleting', $model, null, auth()->id() ?? null);
         });
     }
 }
