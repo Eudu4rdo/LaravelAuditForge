@@ -1,10 +1,11 @@
 <?php
 namespace eudu4rdo\laravelauditforge\Services;
 
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 use eudu4rdo\laravelauditforge\Jobs\LogAuditJob;
-use eudu4rdo\laravelauditforge\Models\AuditEventsLog;
 
-class AuditService
+class AuditEventsService
 {
     public static function logWithJob(string $event, $model, $originalData = null, $user_id = null)
     {
@@ -21,7 +22,7 @@ class AuditService
 
     public static function logAudit(string $event, $model, $originalData = null, $changes = null, $user_id = null)
     {
-        AuditEventsLog::create([
+        DB::table(config('audit-forge.audit_events.table', 'audit_events'))->insert([
             'user_id'       => $user_id,
             'model'         => get_class($model),
             'model_id'      => $model->id ?? null,

@@ -6,7 +6,7 @@ use Illuminate\Queue\SerializesModels;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
-use eudu4rdo\laravelauditforge\Services\AuditService;
+use eudu4rdo\laravelauditforge\Services\AuditEventsService;
 
 class LogAuditJob implements ShouldQueue
 {
@@ -29,6 +29,6 @@ class LogAuditJob implements ShouldQueue
     
     public function handle(): void
     {
-        AuditService::logAudit($this->event, $this->model, $this->originalData, $this->changes, $this->user_id);
+        AuditEventsService::logAudit($this->event, $this->model, $this->originalData, $this->changes, $this->user_id);
     }
 }

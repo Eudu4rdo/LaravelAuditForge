@@ -1,22 +1,22 @@
 <?php
 namespace eudu4rdo\laravelauditforge\Traits;
 
-use eudu4rdo\laravelauditforge\Services\AuditService;
+use eudu4rdo\laravelauditforge\Services\AuditEventsService;
 
 trait Auditable
 {
     protected static function bootAuditable()
     {
         static::creating(function ($model) {
-            AuditService::logWithJob('creating', $model, null, auth()->id() ?? null);
+            AuditEventsService::logWithJob($model->creating_name_action ?? 'creating', $model, null, auth()->id() ?? null);
         });
 
         static::updating(function ($model) {
-            AuditService::logWithJob('updating', $model, $model->getOriginal(), auth()->id() ?? null);
+            AuditEventsService::logWithJob($model->updating_name_action ??'updating', $model, $model->getOriginal(), auth()->id() ?? null);
         });
 
         static::deleting(function ($model) {
-            AuditService::logWithJob('deleting', $model, null, auth()->id() ?? null);
+            AuditEventsService::logWithJob($model->deleting_name_action ??'deleting', $model, null, auth()->id() ?? null);
         });
     }
 }

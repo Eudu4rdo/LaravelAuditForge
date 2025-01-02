@@ -8,7 +8,7 @@ return new class extends Migration
 {
     public function up(): void
     {
-        Schema::create(config('audit-forge.audit_events.table'), function (Blueprint $table) {
+        Schema::create(config('audit-forge.audit_events.table', 'audit_events'), function (Blueprint $table) {
             $table->id();
 
             if (config('audit-forge.user.key_type', 'int') === 'int') {
@@ -34,6 +34,6 @@ return new class extends Migration
 
     public function down(): void
     {
-        Schema::dropIfExists(config('audit-forge.audit_events.table'));
+        Schema::dropIfExists(config('audit-forge.audit_events.table', 'audit_events'));
     }
 };
