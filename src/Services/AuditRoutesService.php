@@ -3,7 +3,7 @@ namespace eudu4rdo\laravelauditforge\Services;
 
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
-use eudu4rdo\laravelauditforge\Jobs\CRIAROJOB;
+use eudu4rdo\laravelauditforge\Jobs\LogAuditRouteJob;
 
 class AuditRoutesService
 {
@@ -11,10 +11,10 @@ class AuditRoutesService
     {
         if (config('audit-forge.audit_use_jobs', false)) {
             if (config('queue.default') !== 'sync') {
-                //LogAuditJob::dispatch($event, $model, $originalData, $model->getDirty(), $user_id);
+                LogAuditRouteJob::dispatch($route, $method, $ip_address, $user_agent, $status_code, $accessed_at, $user_id);
                 return;
             } else {
-                Log::warning('Fila não configurada. Processando auditoria de forma síncrona.');
+                Log::warning('Queue not configured. Processing audit synchronously.');
             }
         }
         self::logAudit($route, $method, $ip_address, $user_agent, $status_code, $accessed_at, $user_id);
@@ -30,6 +30,8 @@ class AuditRoutesService
                 'user_agent'    => $user_agent,
                 'status_code'   => $status_code,
                 'accessed_at'   => $accessed_at,
+                'created_at' => now(),
+                'updated_at' => now(),
             ]);
     }
 }

@@ -3,7 +3,7 @@ namespace eudu4rdo\laravelauditforge\Services;
 
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
-use eudu4rdo\laravelauditforge\Jobs\LogAuditJob;
+use eudu4rdo\laravelauditforge\Jobs\LogAuditEventsJob;
 
 class AuditEventsService
 {
@@ -11,10 +11,10 @@ class AuditEventsService
     {
         if (config('audit-forge.audit_use_jobs', false)) {
             if (config('queue.default') !== 'sync') {
-                LogAuditJob::dispatch($event, $model, $originalData, $model->getDirty(), $user_id);
+                LogAuditEventsJob::dispatch($event, $model, $originalData, $model->getDirty(), $user_id);
                 return;
             } else {
-                Log::warning('Fila não configurada. Processando auditoria de forma síncrona.');
+                Log::warning('Queue not configured. Processing audit synchronously.');
             }
         }
         self::logAudit($event, $model, $originalData, $model->getDirty(), $user_id);

@@ -8,7 +8,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use eudu4rdo\laravelauditforge\Services\AuditEventsService;
 
-class LogAuditJob implements ShouldQueue
+class LogAuditEventsJob implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
