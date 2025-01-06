@@ -1,5 +1,5 @@
 <?php
-namespace eudu4rdo\LaravelAuditForge;
+namespace eudu4rdo\laravelauditforge;
 
 use Illuminate\Support\ServiceProvider;
 
