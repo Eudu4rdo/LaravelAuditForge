@@ -25,7 +25,8 @@ class AuditEventsService
         DB::table(config('audit-forge.audit_events.table', 'audit_events'))->insert([
             'user_id'       => $user_id,
             'model'         => get_class($model),
-            'model_id'      => $model->id ?? null,
+            'model_key'     => $model->getKeyName(),
+            'model_id'      => $model->getKey(),
             'event'         => $event,
             'changes'       => $changes ? json_encode($changes) : null,
             'original_data' => $originalData ? json_encode($originalData) : null,

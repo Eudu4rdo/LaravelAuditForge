@@ -18,6 +18,7 @@ return new class extends Migration
             }
 
             $table->string('model');
+            $table->string('model_key')->nullable();
             $table->string('model_id')->nullable();
             $table->string('event');
             $table->json('original_data')->nullable();
