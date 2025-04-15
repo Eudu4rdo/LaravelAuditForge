@@ -1,7 +1,7 @@
 # Laravel Audit Forge
 <p align="center">
     <img src="https://img.shields.io/badge/Framework-Laravel-blue?style=flat-square&logo=laravel" alt="Laravel Framework">
-    <img src="https://img.shields.io/badge/Version-v0.0.1-green?style=flat-square" alt="Version">
+    <img src="https://img.shields.io/badge/Version-v0.0.2-green?style=flat-square" alt="Version">
 </p>
 Laravel Audit Forge is a tool developed to integrate auditing features with Laravel, providing greater control over user actions. The key differentiator of Laravel Audit Forge is its support for queue usage, allowing for more efficient handling of auditing tasks.
 
