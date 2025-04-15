@@ -1,7 +1,7 @@
 {
     "name": "eudu4rdo/laravelauditforge",
     "description": "A Laravel package for auditing model changes.",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "type": "library",
     "keywords": ["laravel","audit"],
     "license": "MIT",
